@@ -40,5 +40,17 @@ class Command(BaseCommand):
             print "mkdir -v ", putwhere
        
         for asset in _find(settings.MEDIA_ROOT):
-            to = joinpath(putwhere, hashfile(asset))
-            print "cp -v %s %s" % (abspath(asset), abspath(to))
+            try:
+                new_name = hashfile(asset)
+            except IOError, e:
+                # handles symlinks pointing to nowhere and such
+                print "# could not read '%s'" % asset
+                continue
+
+            copy_from = abspath(asset)
+            copy_to = abspath(joinpath(putwhere, new_name))
+
+            if copy_from == copy_to:
+                continue
+
+            print "cp -v %s %s" % (copy_from, copy_to)
