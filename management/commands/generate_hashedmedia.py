@@ -14,7 +14,7 @@ from os import listdir, mkdir
 from os.path import join as joinpath, exists, isdir, abspath
 from shutil import copy2
 
-putwhere = getattr(settings, 'HASHEDMEDIA_ROOT', settings.MEDIA_ROOT)
+HASHEDMEDIA_ROOT = getattr(settings, 'HASHEDMEDIA_ROOT', settings.MEDIA_ROOT)
 
 aliascommand = 'cp -v "%s" "%s"'
 if getattr(settings, 'HASHEDMEDIA_USE_SYMLINKS', False):
@@ -36,8 +36,8 @@ class Command(BaseCommand):
 
 '''
 
-        if not exists(putwhere):
-            print "mkdir -v ", putwhere
+        if not exists(HASHEDMEDIA_ROOT):
+            print "mkdir -v ", HASHEDMEDIA_ROOT
        
         for asset in _find(settings.MEDIA_ROOT):
             try:
@@ -48,7 +48,7 @@ class Command(BaseCommand):
                 continue
 
             copy_from = abspath(asset)
-            copy_to = abspath(joinpath(putwhere, new_name))
+            copy_to = abspath(joinpath(HASHEDMEDIA_ROOT, new_name))
 
             if copy_from == copy_to:
                 continue
