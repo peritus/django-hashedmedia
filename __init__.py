@@ -22,8 +22,11 @@ except ImportError:
 
 add_to_builtins('django_hashedmedia.tags')
 
+HASHEDMEDIA_HASHFUN = getattr(settings, "HASHEDMEDIA_HASHFUN", sha1)
+HASHEDMEDIA_DIGESTLENGTH = getattr(settings, "HASHEDMEDIA_DIGESTLENGTH", 9999)
+
 def digest(content):
-    return urlsafe_b64encode(sha1(content).digest()).strip("=")
+    return urlsafe_b64encode(HASHEDMEDIA_HASHFUN(content).digest()[:HASHEDMEDIA_DIGESTLENGTH]).strip("=")
 
 def hashfile(filename):
   cache_key = "django_hashedmedia:%s" % filename
