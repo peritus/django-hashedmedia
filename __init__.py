@@ -28,11 +28,11 @@ HASHEDMEDIA_DIGESTLENGTH = getattr(settings, "HASHEDMEDIA_DIGESTLENGTH", 9999)
 def digest(content):
     return urlsafe_b64encode(HASHEDMEDIA_HASHFUN(content).digest()[:HASHEDMEDIA_DIGESTLENGTH]).strip("=")
 
-def hashfile(filename):
+def hashfile(filename, no_cache=False):
   cache_key = "django_hashedmedia:%s" % filename
   fromcache = cache.get(cache_key)
 
-  if fromcache:
+  if fromcache and not no_cache:
       return fromcache
 
   # compute hash then

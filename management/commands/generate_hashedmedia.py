@@ -41,7 +41,7 @@ class Command(BaseCommand):
        
         for asset in _find(settings.MEDIA_ROOT):
             try:
-                new_name = hashfile(asset)
+                new_name = hashfile(asset, no_cache=True)
             except IOError, e:
                 # handles symlinks pointing to nowhere and such
                 print "# could not read '%s'" % asset
