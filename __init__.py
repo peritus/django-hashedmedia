@@ -10,7 +10,6 @@
 from base64 import urlsafe_b64encode
 from django.conf import settings
 from django.core.cache import cache
-from django.core.exceptions import ImproperlyConfigured
 from django.template import add_to_builtins
 
 try:

@@ -10,9 +10,8 @@
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django_hashedmedia import hashfile
-from os import listdir, mkdir
+from os import listdir
 from os.path import join as joinpath, exists, isdir, abspath
-from shutil import copy2
 
 HASHEDMEDIA_ROOT = getattr(settings, 'HASHEDMEDIA_ROOT', settings.MEDIA_ROOT)
 
