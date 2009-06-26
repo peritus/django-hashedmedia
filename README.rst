@@ -52,6 +52,15 @@ Installation
 Put the folder django_hashedmedia somewhere in your ``$PYTHONPATH`` (presumably
 your project folder, where your manage.py lives).
 
+Then edit settings.py and add django_hashedmedia to the list of INSTALLED_APPS:
+
+.. sourcecode:: python
+  INSTALLED_APPS = (
+    # ...
+    'django_hashedmedia',
+  )
+
+
 Preparing your templates
 ------------------------
 
