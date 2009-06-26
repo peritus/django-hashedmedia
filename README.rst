@@ -95,7 +95,7 @@ values, adapt to your needs):
   HASHEDMEDIA_ENABLED = not DEBUG
 
   # Where to put the renamed files.
-  HASHEDMEDIA_MEDIA_ROOT = MEDIA_ROOT
+  HASHEDMEDIA_ROOT = MEDIA_ROOT
 
   # Hashing algorithm to use (callable)
   import hashlib
