@@ -97,6 +97,9 @@ values, adapt to your needs):
   # Where to put the renamed files.
   HASHEDMEDIA_ROOT = MEDIA_ROOT
 
+  # URL for serving compressed media. Include a trailing slash.
+  HASHEDMEDIA_URL = MEDIA_URL
+
   # Hashing algorithm to use (callable)
   import hashlib
   HASHEDMEDIA_HASHFUN = hashlib.sha1

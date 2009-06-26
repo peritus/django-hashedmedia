@@ -18,4 +18,7 @@ def hashed_media_url(realname):
 
     if not getattr(settings, "HASHEDMEDIA_ENABLED", False):
         return settings.MEDIA_URL + realname
-    return settings.MEDIA_URL + hashfile(settings.MEDIA_ROOT + realname)
+
+    return getattr(settings, "HASHEDMEDIA_URL", settings.MEDIA_URL) + \
+      hashfile(settings.MEDIA_ROOT + realname)
+
